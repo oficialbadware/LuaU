@@ -52,8 +52,6 @@ function NotifyLib:Notify(Title, Content, Value, Duration, Image)
 			Notification.Title.Icon.Image = "rbxassetid://14810928256"
 		end
 
-        print(Notification.Description.TextBounds.X)
-        print(Notification.Description.TextBounds.Y)
         Notification.Title.Icon.ImageColor3 = StringColor
         Notification.Title.TextColor3 = StringColor
         for _, Text in next, Notification:GetChildren() do
