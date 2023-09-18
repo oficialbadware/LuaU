@@ -79,7 +79,7 @@ function HexLibrary:Notify(Title, Content, Type, Duration, Image)
 	NotifyLib:Notify(Title or "Untitled", Content or "No content", Type or 1, Duration or 4, Image)
 end
 
-function HexLibrary:Visible(Bool)
+function HexLibrary:ChangeVisible(Bool)
 	HexUI.Enabled = Bool
 end
 
