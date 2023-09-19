@@ -37,6 +37,7 @@ function NotifyLib:Notify(Title, Content, Value, Duration, Image)
 		Notification.Parent = Main
 		Notification.Name = Title or "Untitled"
         Notification.Description.Text = Content
+		Notification.Title.Text = Title or "Untitled"
 		Notification.Visible = true
 
         local NotifyConfig = {
