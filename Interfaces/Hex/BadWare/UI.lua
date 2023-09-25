@@ -270,6 +270,9 @@ function HexLibrary:CreateWindow(Settings)
 							TweenService:Create(NewButton.UIStroke, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {Color = Color3.fromRGB(40, 40, 40)}):Play()
                             TweenService:Create(NewButton.UICorner, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {CornerRadius = UDim.new(0, 4)}):Play()
                         end
+			if not Success then
+				print(Response)
+			end
                     end)
 
 					function ButtonValue:Hide(Value)
