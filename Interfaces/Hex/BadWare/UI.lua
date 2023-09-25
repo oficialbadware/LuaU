@@ -669,6 +669,43 @@ function HexLibrary:CreateWindow(Settings)
 						end
 					end
 
+					function DropdownSettings:Set(NewOption)
+						DropdownSettings.CurrentOption = NewOption
+
+						if not typeof(NewOption) == "table" then
+							Dropdown.Options = {NewOption}
+						end
+						
+						for _, DropdownOpt in ipairs(NewDropdown.List:GetChildren()) do
+							if DropdownOpt.ClassName == "Frame" then
+								DropdownOpt:Destroy()
+							end
+						end
+		
+						if typeof(DropdownSettings.CurrentOption) == "string" then
+							DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption}
+						end
+			
+						if not DropdownSettings.MultipleOptions then
+							DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption[1]}
+						end
+		
+						local Success, Response = pcall(function()
+							DropdownSettings.Callback(DropdownSettings.CurrentOption)
+						end)
+		
+						for _, droption in ipairs(NewDropdown.List:GetChildren()) do
+							if droption.ClassName == "Frame" then
+								if not table.find(DropdownSettings.CurrentOption, droption.Name) then
+									droption.BackgroundColor3 = Color3.fromRGB(55,55,55)
+								else
+									droption.BackgroundColor3 = Color3.fromRGB(75,75,75)
+								end
+							end
+						end
+
+					end
+
 					return DropdownValue
 				end
 
