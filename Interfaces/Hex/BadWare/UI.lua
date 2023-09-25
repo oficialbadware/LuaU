@@ -709,7 +709,7 @@ function HexLibrary:CreateWindow(Settings)
 
 					end
 
-					return DropdownValue
+					return DropdownSettings
 				end
 
 				return Section
