@@ -669,7 +669,7 @@ function HexLibrary:CreateWindow(Settings)
 						end
 					end
 
-					function DropdownValue:Set(NewOption)
+					function DropdownSettings:Set(NewOption)
 
 						print("Changed "..DropdownSettings.Name.." | "..NewOption)
 						
