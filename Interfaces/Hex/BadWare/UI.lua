@@ -669,7 +669,10 @@ function HexLibrary:CreateWindow(Settings)
 						end
 					end
 
-					function DropdownSettings:Set(NewOption)
+					function DropdownValue:Set(NewOption)
+
+						print("Changed "..DropdownSettings.Name.." | "..NewOption)
+						
 						DropdownSettings.CurrentOption = NewOption
 
 						if not typeof(NewOption) == "table" then
