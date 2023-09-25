@@ -674,7 +674,7 @@ function HexLibrary:CreateWindow(Settings)
 
 					function DropdownSettings:Set(NewOption)
 
-						print("Changed "..DropdownSettings.Name.." | "..NewOption)
+						print("Changed "..DropdownSettings.Name.." | "..unpack(NewOption))
 						
 						DropdownSettings.CurrentOption = NewOption
 
