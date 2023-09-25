@@ -695,10 +695,63 @@ function HexLibrary:CreateWindow(Settings)
 						if not DropdownSettings.MultipleOptions then
 							DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption[1]}
 						end
+
+						for _, Option in ipairs(DropdownSettings.Options) do
+							local DropdownOption = Templates["Dropdown"].List.Template:Clone()
+							DropdownOption.Name = Option
+							DropdownOption.Title.Text = Option
+							DropdownOption.Parent = NewDropdown.List
+							DropdownOption.Visible = true
+			
+							if DropdownSettings.CurrentOption == Option then
+								DropdownOption.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+							end
+			
+							DropdownOption.Interact.ZIndex = 50
+							DropdownOption.Interact.MouseButton1Click:Connect(function()
+								if not DropdownSettings.MultipleOptions and table.find(DropdownSettings.CurrentOption, Option) then 
+									return
+								end
+			
+								if table.find(DropdownSettings.CurrentOption, Option) then
+									table.remove(DropdownSettings.CurrentOption, table.find(DropdownSettings.CurrentOption, Option))
+								else
+									if not DropdownSettings.MultipleOptions then
+										table.clear(DropdownSettings.CurrentOption)
+									end
+									table.insert(DropdownSettings.CurrentOption, Option)
+									TweenService:Create(DropdownOption, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(75,75,75)}):Play()
+								end
+			
+			
+								local Success, Response = pcall(function()
+									DropdownSettings.Callback(DropdownSettings.CurrentOption)
+								end)
 		
-						local Success, Response = pcall(function()
-							DropdownSettings.Callback(DropdownSettings.CurrentOption)
-						end)
+			
+								for _, droption in ipairs(NewDropdown.List:GetChildren()) do
+									if droption.ClassName == "Frame" and not table.find(DropdownSettings.CurrentOption, droption.Name) then
+										TweenService:Create(droption, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(55,55,55)}):Play()
+									end
+								end
+								if not DropdownSettings.MultipleOptions then
+									wait(0.1)
+									TweenService:Create(NewDropdown, TweenInfo.new(0.35, Enum.EasingStyle.Quint), {Size = DropVisualSettings.CloseDropSize}):Play()
+									NewDropdown.Title.Position = DropVisualSettings.CloseTitlePos
+									NewDropdown.Logo.Position = DropVisualSettings.CloseTogglePos
+									for _, DropdownOpt in ipairs(NewDropdown.List:GetChildren()) do
+										if DropdownOpt.ClassName == "Frame" then
+											TweenService:Create(DropdownOpt, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+											TweenService:Create(DropdownOpt.Title, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+										end
+									end
+									TweenService:Create(NewDropdown.Logo, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Rotation = 180}):Play()	
+									wait(0.35)
+									NewDropdown.List.Visible = false
+								end
+								Debounce = false
+							end)
+						end
 		
 						for _, droption in ipairs(NewDropdown.List:GetChildren()) do
 							if droption.ClassName == "Frame" then
