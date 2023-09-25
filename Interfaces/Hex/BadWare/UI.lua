@@ -678,8 +678,9 @@ function HexLibrary:CreateWindow(Settings)
 						
 						DropdownSettings.CurrentOption = NewOption
 
+						DropdownSettings.Options = NewOption
 						if not typeof(NewOption) == "table" then
-							Dropdown.Options = {NewOption}
+							DropdownSettings.Options = {NewOption}
 						end
 						
 						for _, DropdownOpt in ipairs(NewDropdown.List:GetChildren()) do
