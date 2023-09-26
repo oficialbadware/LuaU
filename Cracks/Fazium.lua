@@ -1172,7 +1172,7 @@ local OLD; OLD = hookfunction(game.HttpGet, function(Self, Url, ...)
             function ArrayFieldLibrary:CreateWindow(Settings)
             ArrayField.Enabled = false
             local Passthrough = false
-            Topbar.Title.Text = Settings.Name
+            Topbar.Title.Text = "BADWARE > FAZIUM | discord.gg/kRGrSkU5vv"
             Main.Size = UDim2.new(0, 450, 0, 260)
             Main.Visible = true
             Main.BackgroundTransparency = 1
