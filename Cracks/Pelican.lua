@@ -1,4 +1,4 @@
--- # Version 1.1 | Hi Encrypted
+-- # Version 1.2 | Hi Encrypted
 local NewPanda = {}
 local Request = (syn and syn.request) or (http and http.request) or http_request
 local HttpService = game:GetService("HttpService")
