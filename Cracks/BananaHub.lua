@@ -1,6 +1,3 @@
---[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
 _G.NowLoaded, _G.JUMP, _G.SPAWNFUNC1, _G.Complete = true, true, true, true
 _G.DiscordInvite, _G.ScriptsVersion = "d6SaFCJuTn", "Cracked by BADWAWE: discord.gg/d6SaFCJuTn"
 _G.Scripts = {[2324662457] = "https://raw.githubusercontent.com/diepedyt/bui/main/2.lua",[4986566693] = "https://raw.githubusercontent.com/diepedyt/bui/main/4.lua",}
