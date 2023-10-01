@@ -375,6 +375,7 @@ end
 ----------------------------------------------------------------
 
 local function md5_update(self, s)
+  print(self, s)
   self.pos = self.pos + #s
   s = self.buf .. s
   for ii = 1, #s - 63, 64 do
@@ -388,6 +389,7 @@ local function md5_update(self, s)
 end
 
 local function md5_finish(self)
+  print(self)
   local msgLen = self.pos
   local padLen = 56 - msgLen % 64
 
